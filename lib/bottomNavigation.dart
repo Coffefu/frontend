@@ -31,7 +31,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
         title: const Text("Coffefu"),
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: _widgetOptions[_selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
