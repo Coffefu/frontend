@@ -19,7 +19,9 @@ class _MenuActivityState extends State<MenuActivity> {
     try {
       final response =
           await http.get(Uri.parse('http://10.0.2.2:8000/products'));
+
       var data = jsonDecode(response.body) as List;
+
       var products = List<ProductWidget>.generate(data.length, (i) {
         var d = data[i];
         return ProductWidget(Product(d['id'], d['name'], d['img']));
