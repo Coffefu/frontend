@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/Activities/cartActivity.dart';
-import 'package:frontend/Activities/menuActivity.dart';
-import 'package:frontend/Activities/profileActivity.dart';
+import 'package:frontend/Activities/cart_activity.dart';
+import 'package:frontend/Activities/menu_activity.dart';
+import 'package:frontend/Activities/profile_activity.dart';
 
 class BottomNavigationWidget extends StatefulWidget {
   const BottomNavigationWidget({Key? key}) : super(key: key);
