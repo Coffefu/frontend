@@ -9,9 +9,9 @@ class Product {
 }
 
 class ProductWidget extends StatefulWidget {
-  late Product product;
+  final Product product;
 
-  ProductWidget(this.product, {Key? key}) : super(key: key);
+  const ProductWidget(this.product, {Key? key}) : super(key: key);
 
   @override
   State<ProductWidget> createState() => _ProductWidgetState();
