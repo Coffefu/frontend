@@ -3,14 +3,14 @@ import 'package:frontend/Activities/cart_activity.dart';
 import 'package:frontend/Activities/menu_activity.dart';
 import 'package:frontend/Activities/profile_activity.dart';
 
-class BottomNavigationWidget extends StatefulWidget {
-  const BottomNavigationWidget({Key? key}) : super(key: key);
+class NavigationWidget extends StatefulWidget {
+  const NavigationWidget({Key? key}) : super(key: key);
 
   @override
-  State<BottomNavigationWidget> createState() => _BottomNavigationWidgetState();
+  State<NavigationWidget> createState() => _NavigationWidgetState();
 }
 
-class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
+class _NavigationWidgetState extends State<NavigationWidget> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     MenuActivity(),
@@ -27,9 +27,6 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Coffefu"),
-      ),
       body: Center(
         child: _widgetOptions[_selectedIndex],
       ),
