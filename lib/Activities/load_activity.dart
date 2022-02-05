@@ -24,7 +24,7 @@ class _LoadActivityWidgetState extends State<LoadActivity> {
                 children: [
                   const Text("Cofefu", style: TextStyle(fontSize: 40)),
                   // REDO use SvgPicture.assets
-                  SvgPicture.network('http://10.0.2.2:8000/favicon.svg')
+                  // SvgPicture.network('http://51.250.4.2:8000/favicon.svg')
                 ],
               ),
               const SizedBox(height: 10),

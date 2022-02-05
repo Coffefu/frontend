@@ -34,7 +34,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                   padding: const EdgeInsets.fromLTRB(27, 30, 27, 17),
                   child: Image.network(widget.product.imgUrl),
                 ),
-                Text(widget.product.name)
+                Text(widget.product.name.toString())
               ]),
             )));
   }
