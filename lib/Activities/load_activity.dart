@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoadActivity extends StatefulWidget {
   const LoadActivity({Key? key}) : super(key: key);
@@ -20,10 +21,9 @@ class _LoadActivityWidgetState extends State<LoadActivity> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text("Cofefu", style: TextStyle(fontSize: 40)),
-                  // REDO use SvgPicture.assets
-                  // SvgPicture.network('http://51.250.4.2:8000/favicon.svg')
+                children: [
+                  const Text("Cofefu", style: TextStyle(fontSize: 40)),
+                  SvgPicture.asset('assets/beans.svg'),
                 ],
               ),
               const SizedBox(height: 10),
