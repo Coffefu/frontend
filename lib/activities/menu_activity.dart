@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/components/product.dart';
+import 'package:frontend/common/components/product.dart';
 import 'package:frontend/store/store.dart' as store;
 
 class MenuActivity extends StatefulWidget {

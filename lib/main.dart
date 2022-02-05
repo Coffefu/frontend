@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/Activities/load_activity.dart';
 
-import 'bottom_navigation.dart';
+import 'navigation.dart';
 import 'store/store.dart' as store;
 
 void main() {
@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: _isLoading ? const LoadActivity() : const BottomNavigationWidget(),
+      home: _isLoading ? const LoadActivity() : const NavigationWidget(),
     );
   }
 }
