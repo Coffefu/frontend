@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Product {
+class ProductCard {
   final int id;
   final String name;
-  final String imgUrl;
 
-  Product(this.id, this.name, this.imgUrl);
+  ProductCard(this.id, this.name);
 }
 
 class ProductWidget extends StatefulWidget {
-  final Product product;
+  final ProductCard product;
 
   const ProductWidget(this.product, {Key? key}) : super(key: key);
 
@@ -30,11 +29,10 @@ class _ProductWidgetState extends State<ProductWidget> {
             child: Container(
               padding: const EdgeInsets.all(0.0),
               child: Column(children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(27, 30, 27, 17),
-                  child: Image.network(widget.product.imgUrl),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(27, 30, 27, 17)
                 ),
-                Text(widget.product.name.toString())
+                Text(widget.product.name)
               ]),
             )));
   }

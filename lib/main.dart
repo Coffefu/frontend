@@ -1,41 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/Activities/load_activity.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:frontend/common/models/app_state.dart';
+import 'package:frontend/store/reducers/app_reducers.dart';
+import 'package:redux/redux.dart';
+import 'package:redux_thunk/redux_thunk.dart';
 
+import 'common/models/menu.dart';
 import 'navigation.dart';
-import 'store/store.dart' as store;
 
 void main() {
-  runApp(const MyApp());
+
+  final store = Store<AppState>(
+    appStateReducer,
+    initialState: AppState([], Menu([])),
+    middleware: [thunkMiddleware],
+  );
+
+  runApp(CoffeeApp(store: store));
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class CoffeeApp extends StatelessWidget {
+  final Store<AppState> store;
 
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    loadData();
-  }
-
-  void loadData() async {
-    setState(() => _isLoading = true);
-
-    await store.fetchProducts();
-
-    setState(() => _isLoading = false);
-  }
+  const CoffeeApp({Key? key, required this.store}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: _isLoading ? const LoadActivity() : const NavigationWidget(),
-    );
+    return StoreProvider(
+        store: store,
+        child: const MaterialApp(
+          home: NavigationWidget()
+        ));
   }
 }
