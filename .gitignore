@@ -47,3 +47,4 @@ app.*.map.json
 
 # Another ignores
 /lib/test.dart
+pubspec.lock
