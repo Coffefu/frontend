@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
-class CounterView extends StatefulWidget {
+class CounterWidget extends StatefulWidget {
   final int maxValue;
   final double? width;
+  final Function(int)? callBack;
 
-  const CounterView({Key? key, this.maxValue = 10, this.width = 128})
+  const CounterWidget(
+      {Key? key, this.maxValue = 10, this.width = 128, this.callBack})
       : super(key: key);
 
   @override
-  _CounterViewState createState() => _CounterViewState();
+  _CounterWidgetState createState() => _CounterWidgetState();
 }
 
-class _CounterViewState extends State<CounterView> {
+class _CounterWidgetState extends State<CounterWidget> {
   int _count = 0;
 
   get count => _count;
@@ -25,9 +27,15 @@ class _CounterViewState extends State<CounterView> {
     _count = value > widget.maxValue ? widget.maxValue : value;
   }
 
-  void _reduce() async => setState(() => --count);
+  void _reduce() async {
+    setState(() => --count);
+    widget.callBack!(count);
+  }
 
-  void _increase() async => setState(() => ++count);
+  void _increase() async {
+    setState(() => ++count);
+    widget.callBack!(count);
+  }
 
   RawMaterialButton getButton(IconData icon, VoidCallback onPressed) {
     return RawMaterialButton(
