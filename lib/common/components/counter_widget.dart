@@ -14,7 +14,7 @@ class CounterWidget extends StatefulWidget {
 }
 
 class _CounterWidgetState extends State<CounterWidget> {
-  int _count = 0;
+  int _count = 1;
 
   get count => _count;
 

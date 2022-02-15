@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/common/components/counter_widget.dart';
 import 'package:frontend/common/components/product.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:frontend/common/models/app_state.dart';
+import 'package:frontend/common/models/product_model.dart';
+import 'package:frontend/store/actions/cart_actions.dart';
+import 'package:frontend/store/reducers/cart_reducers.dart';
 
 class OrderActivity extends StatefulWidget {
   final ProductCard product;
@@ -11,11 +16,7 @@ class OrderActivity extends StatefulWidget {
 }
 
 class _OrderActivityState extends State<OrderActivity> {
-  int count = 0;
-
-  void add() {
-    print(count);
-  }
+  int count = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -47,16 +48,23 @@ class _OrderActivityState extends State<OrderActivity> {
             const Text("Размер", style: TextStyle(fontSize: 32)),
             const Text("Сахар", style: TextStyle(fontSize: 32)),
             const Text("100 руб", style: TextStyle(fontSize: 32)),
-            ElevatedButton(
-              style: ButtonStyle(
-                elevation: MaterialStateProperty.all(0),
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15))),
-                padding: MaterialStateProperty.all(
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 80)),
+            StoreConnector<AppState, Function(Product)>(
+              converter: (store) =>
+                  (item) => store.dispatch(AddItemAction(item)),
+              builder: (context, callback) => ElevatedButton(
+                style: ButtonStyle(
+                  elevation: MaterialStateProperty.all(0),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                  ),
+                  padding: MaterialStateProperty.all(
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 80),
+                  ),
+                ),
+                onPressed: () => callback(Product("123", count.toString())),
+                child: const Text('Добавить', style: TextStyle(fontSize: 24)),
               ),
-              onPressed: add,
-              child: const Text('Добавить', style: TextStyle(fontSize: 24)),
             )
           ],
         ),

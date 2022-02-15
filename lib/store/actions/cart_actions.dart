@@ -1,4 +1,3 @@
-
 import 'package:frontend/common/models/product_model.dart';
 
 class AddItemAction {
@@ -7,8 +6,8 @@ class AddItemAction {
   AddItemAction(this.item);
 }
 
-class DeleteItemAction {
+class RemoveItemAction {
   final Product item;
 
-  DeleteItemAction(this.item);
+  RemoveItemAction(this.item);
 }
