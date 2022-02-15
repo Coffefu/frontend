@@ -17,23 +17,26 @@ class ProductWidget extends StatefulWidget {
 }
 
 class _ProductWidgetState extends State<ProductWidget> {
+  void productOnClick() =>
+      Navigator.pushNamed(context, '/orderActivity', arguments: widget.product);
+
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: const Color(0xFFF7F8FB),
-        elevation: 8,
+      color: const Color(0xFFF7F8FB),
+      elevation: 8,
+      borderRadius: BorderRadius.circular(15),
+      child: InkWell(
         borderRadius: BorderRadius.circular(15),
-        child: InkWell(
-            borderRadius: BorderRadius.circular(15),
-            onTap: () => {}, //TODO implement Product click method
-            child: Container(
-              padding: const EdgeInsets.all(0.0),
-              child: Column(children: <Widget>[
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(27, 30, 27, 17)
-                ),
-                Text(widget.product.name)
-              ]),
-            )));
+        onTap: productOnClick,
+        child: Container(
+          padding: const EdgeInsets.all(0.0),
+          child: Column(children: <Widget>[
+            const Padding(padding: EdgeInsets.fromLTRB(27, 30, 27, 17)),
+            Text(widget.product.name)
+          ]),
+        ),
+      ),
+    );
   }
 }
