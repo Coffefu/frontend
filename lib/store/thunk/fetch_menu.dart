@@ -11,7 +11,7 @@ ThunkAction<AppState> getMenuProducts() {
   return (Store<AppState> store) async {
     var productsList = [];
     final response = await http.get(
-          Uri.parse('http://51.250.4.2:8000/products'),
+          Uri.parse('http://51.250.4.2/products'),
           headers: {'Content-Type': 'application/json'});
 
     productsList =
