@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:frontend/activities/load_activity.dart';
+import 'package:frontend/activities/order_activity.dart';
 import 'package:frontend/common/models/app_state.dart';
 import 'package:frontend/store/reducers/app_reducers.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
 import 'common/models/menu.dart';
+import 'common/models/product_model.dart';
 import 'navigation.dart';
 
 void main() {
-
   final store = Store<AppState>(
     appStateReducer,
     initialState: AppState([], Menu([])),
@@ -28,8 +30,22 @@ class CoffeeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreProvider(
         store: store,
-        child: const MaterialApp(
-          home: NavigationWidget()
+        child: MaterialApp(
+          initialRoute: '/',
+          routes: {
+            '/': (BuildContext context) => const NavigationWidget(),
+            '/loadScree': (BuildContext context) => const LoadActivity(),
+          },
+          onGenerateRoute: (settings) {
+            if (settings.name == '/orderActivity') {
+              return MaterialPageRoute(builder: (context) {
+                return OrderActivity(product: settings.arguments as Product);
+              });
+            }
+
+            assert(false, 'Need to implement ${settings.name}');
+            return null;
+          },
         ));
   }
 }

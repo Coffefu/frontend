@@ -13,7 +13,8 @@ Menu menuReducers(List<Product> products, dynamic action) {
   return Menu(products);
 }
 
-Menu menuLoadingSuccess(List<Product> products, menuLoadingSuccessAction action) {
+Menu menuLoadingSuccess(
+    List<Product> products, menuLoadingSuccessAction action) {
   return Menu(List.from(action.products));
 }
 

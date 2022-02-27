@@ -1,14 +1,13 @@
-
 import 'package:frontend/common/models/product_model.dart';
 
 class AddItemAction {
-  final Product item;
+  final CardProduct item;
 
   AddItemAction(this.item);
 }
 
-class DeleteItemAction {
-  final Product item;
+class RemoveItemAction {
+  final CardProduct item;
 
-  DeleteItemAction(this.item);
+  RemoveItemAction(this.item);
 }
