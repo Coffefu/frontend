@@ -11,6 +11,10 @@ class ProductWidget extends StatefulWidget {
 }
 
 class _ProductWidgetState extends State<ProductWidget> {
+  void onTap() {
+    Navigator.pushNamed(context, '/orderActivity', arguments: widget.product);
+  }
+
   @override
   Widget build(BuildContext context) {
     final borderRadius = BorderRadius.circular(10);
@@ -25,7 +29,7 @@ class _ProductWidgetState extends State<ProductWidget> {
             splashColor: const Color(0xFF5C3D1F),
             highlightColor: const Color(0x445C3D1F),
             borderRadius: borderRadius,
-            onTap: () {},
+            onTap: onTap,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               child: Column(
