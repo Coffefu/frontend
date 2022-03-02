@@ -1,3 +1,5 @@
+import 'package:frontend/common/models/topping_model.dart';
+
 class Product {
   final String name;
   final String description;
@@ -12,15 +14,8 @@ class Product {
 }
 
 class CardProduct extends Product {
-  int count;
+  List<Topping>? toppings;
 
-  CardProduct(
-      {required String name,
-      required String description,
-      required int price,
-      required this.count})
-      : super(name: name, description: description, price: price);
-
-  CardProduct.fromProduct({required Product product, required this.count})
+  CardProduct({required Product product, this.toppings})
       : super.clone(product: product);
 }
