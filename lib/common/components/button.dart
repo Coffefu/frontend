@@ -10,7 +10,7 @@ class Button extends StatefulWidget {
 
   const Button({
     Key? key,
-    this.onTap,
+    required this.onTap,
     this.child,
     this.color = Colors.blue,
     this.highlightColor = Colors.transparent,
@@ -28,6 +28,8 @@ class _ButtonState extends State<Button> {
     return Material(
       borderRadius: widget.borderRadius ?? BorderRadius.circular(20),
       color: widget.color,
+      textStyle: const TextStyle(
+          color: Colors.white, fontSize: 24, fontWeight: FontWeight.w700),
       child: InkWell(
         highlightColor: widget.highlightColor,
         splashColor: widget.splashColor,
