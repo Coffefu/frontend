@@ -60,22 +60,17 @@ class _OrderActivityState extends State<OrderActivity> {
                     ]),
                 const SizedBox(height: 10),
                 StoreConnector<AppState, Function(CardProduct)>(
-                  converter: (store) =>
-                      (item) => store.dispatch(AddItemAction(item)),
-                  builder: (context, callback) => Button(
-                      onTap: () {
-                        callback(CardProduct(product: widget.product));
-                        Navigator.pop(context);
-                      },
-                      child: const Padding(
-                          padding:
-                              EdgeInsets.symmetric(vertical: 8, horizontal: 92),
-                          child: Text('Добавить',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w700)))),
-                ),
+                    converter: (store) =>
+                        (item) => store.dispatch(AddItemAction(item)),
+                    builder: (context, callback) => Button(
+                        onTap: () {
+                          callback(CardProduct(product: widget.product));
+                          Navigator.pop(context);
+                        },
+                        child: const Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 8, horizontal: 92),
+                            child: Text('Добавить')))),
               ],
             )
           ],
